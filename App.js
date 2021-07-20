@@ -17,7 +17,6 @@ componentDidMount() {
     axios.get('https://randomuser.me/api/?nat=br&results=15')
       .then(response => {
         const {results} = response.data;
-        console.log(results)
         this.setState({
           peoples: results
         });
@@ -27,7 +26,7 @@ componentDidMount() {
   render() {
     return (
       <View>
-        <Header title="People" />
+        <Header title="Contatos" />
         <PeopleList peoples={ this.state.peoples }/>
       </View>
     );
