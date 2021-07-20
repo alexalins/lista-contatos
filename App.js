@@ -1,35 +1,27 @@
 import React from 'react';
-import { View } from 'react-native';
-import axios from 'axios';
+import PeoplePage from './src/pages/PeoplePage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import Header from './src/components/Header';
-import PeopleList from './src/components/PeopleList';
+const Stack = createStackNavigator();
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        peoples: []
-    };
-}
-
-componentDidMount() {
-    axios.get('https://randomuser.me/api/?nat=br&results=15')
-      .then(response => {
-        const {results} = response.data;
-        this.setState({
-          peoples: results
-        });
-    });
-  };
-
-  render() {
+function App() {
     return (
-      <View>
-        <Header title="Contatos" />
-        <PeopleList peoples={ this.state.peoples }/>
-      </View>
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Contatos" screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#6ca2f7',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize: 24
+                },
+            }}>
+                <Stack.Screen name="Contatos" component={PeoplePage} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
-  }
 }
 
+export default App;
