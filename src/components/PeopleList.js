@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import PeopleListItem from './PeopleListItem';
 
 const PeopleList = props =>  {
     const { peoples, onPressItem } = props;
 
-    const items = peoples.map( people => {
-        return <PeopleListItem people={people} key={people.name.first} navegationPeopleDetail={onPressItem} />
-    });
-
     return (
-        <View style={styles.container}>
-            { items }
-        </View>
+        <FlatList style={styles.container}
+            data={ peoples }
+            keyExtractor={(item, index) => item.name.first + index}
+            renderItem={({ item }) => (
+                <PeopleListItem
+                 people={item} 
+                 navegationPeopleDetail={onPressItem} />
+            )} />
     )
 }
 
