@@ -6,8 +6,8 @@ const Line = (props) => {
 
     return (
         <View style={styles.line}>
-            <Text style={[styles.cell, styles.label, label.length > 8 ? styles.longLabel : null]}>{label}</Text>
-            <Text style={[styles.cell, styles.content]}>{content}</Text>
+            <Text style={[styles.cell, styles.label]}>{label}</Text>
+            <Text style={[styles.cell, styles.content, content.length > 12 ? styles.longLabel : null]}>{content}</Text>
         </View>
     );
 };
@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
       flex: 1
     },
     content: {
-        flex: 3
+        flex: 2
     },
     longLabel: {
-        fontSize: 12,
+        fontSize: 16,
     }
   });
