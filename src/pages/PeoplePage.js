@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import axios from 'axios';
-import Header from '../components/Header';
 import PeopleList from '../components/PeopleList';
 
 export default class PeoplePage extends React.Component {
@@ -26,7 +25,7 @@ componentDidMount() {
     return (
       <View>
         {/*<Header title="Contatos" />*/}
-        <PeopleList peoples={ this.state.peoples }/>
+        <PeopleList peoples={ this.state.peoples } onPressItem={(pageParams) => { this.props.navigation.navigate('Detalhes', {people: pageParams}) }}/>
       </View>
     );
   }

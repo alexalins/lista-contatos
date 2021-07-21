@@ -4,11 +4,11 @@ import Icon from './Icon';
 
 
 const PeopleListItem = props => {
-    const { people } = props;
+    const { people, navegationPeopleDetail } = props;
     const { first, last } = people.name;
     const { thumbnail } = people.picture;
     return (
-        <TouchableOpacity onPress={() => console.log(first)}>
+        <TouchableOpacity onPress={() => navegationPeopleDetail(first)}>
             <View style={styles.line}>
                 <Icon url={thumbnail} />
                 <Text style={styles.lineText}>{`${first} ${last}`}</Text>
