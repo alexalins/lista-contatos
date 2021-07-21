@@ -27,7 +27,7 @@ function App() {
             }}>
                 <Stack.Screen name="Contatos" component={PeoplePage} />
                 <Stack.Screen name="Detalhes" component={PeopleDetailPage} options={({ route }) => ({
-                    title: route.params.people,
+                    title: route.params.people.name.first,
                     headerTitleStyle: {
                         color: 'white',
                         fontWeight: 'bold',
